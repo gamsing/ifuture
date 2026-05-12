@@ -1,0 +1,15 @@
+services:
+  ifuture:
+    build: .
+    ports:
+      - "8501:8501"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ifuture-local:/app/.index_pricing_local
+      - ifuture-cache:/app/.index_pricing_cache
+
+volumes:
+  ifuture-local:
+  ifuture-cache:

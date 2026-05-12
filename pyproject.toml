@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ifuture"
+version = "0.1.0"
+description = "Realtime CFFEX index-futures basis and annualized discount monitor."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "GPL-3.0-only"}
+authors = [
+  {name = "ifuture maintainers"},
+]
+dependencies = [
+  "akshare",
+  "fastapi",
+  "httpx",
+  "jinja2>=3.1.5",
+  "numpy",
+  "pandas",
+  "pydantic",
+  "scipy",
+  "streamlit",
+  "tushare",
+  "uvicorn",
+]
+
+[project.optional-dependencies]
+dev = [
+  "detect-secrets",
+  "mypy",
+  "pytest",
+  "ruff",
+]
+
+[project.scripts]
+cffex-cli = "index_pricing.cli:main"
+cffex-monitor = "index_pricing.streamlit_launcher:main"
+
+[tool.setuptools]
+packages = ["index_pricing"]
+py-modules = ["monitor_ui", "realtime_adapter", "price_indices", "hk_highcap_report"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "BLE"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["index_pricing"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "integration: tests that call free public upstream data providers",
+]

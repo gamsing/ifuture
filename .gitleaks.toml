@@ -1,0 +1,8 @@
+[allowlist]
+description = "Repository safety docs and scanner implementation contain placeholder secret patterns."
+paths = [
+  '''\.claude/''',
+  '''CLAUDE\.md''',
+  '''\.env\.example''',
+  '''scripts/check_secrets\.py''',
+]
