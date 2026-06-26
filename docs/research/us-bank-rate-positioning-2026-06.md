@@ -8,14 +8,15 @@
 > **As of 2026-06-25.** Structured layer = Tushare (Q1-2026 balance sheet `20260331` + FY2025 indicators +
 > 2026-06-24 valuation). Filing layer = SEC 10-Q/10-K + Q1-2026 earnings calls.
 >
-> **⚠️ Source-confidence caveat (updated 2026-06-26).** The **5 priority banks (BAC, ZION, USB, KEY, WFC)** have
-> now been **finalized from the primary Q1-2026 10-Q** — asset-sensitivity/EVE tables, HTM/AFS gross unrealized
-> losses, and average deposit cost are read directly from SEC EDGAR (see **§2.1**); those cells are marked **✓**
-> and are high-confidence. (The original session's HTTP 403s were a missing-User-Agent egress quirk, not a real
-> block; direct EDGAR fetch works.) The **remaining 10 names'** filing-layer figures (asset-sensitivity, HTM/AFS
-> marks, CET1, CRE, NII guidance) are **still web-sourced** — single-source, verify against the 10-Q before
-> trading. The structured layer (AOCI, AFS/HTM balances, TCE, P/TBV, ROA) is computed directly from the Tushare
-> feed and is high-confidence. Per-field confidence is flagged throughout. Not investment advice.
+> **⚠️ Source-confidence caveat (updated 2026-06-26).** **All 15 banks** have now been **finalized from the
+> primary Q1-2026 10-Q** for the highest-value cells — asset-sensitivity (±100/±200bp NII) and EVE tables, HTM/AFS
+> gross unrealized losses, and average deposit cost — read directly from SEC EDGAR (see **§2.1** priority 5, **§2.2**
+> the other 10); those cells are marked **✓** and are high-confidence. (The original session's HTTP 403s were a
+> missing-User-Agent egress quirk, not a real block; direct EDGAR fetch works.) The structured layer (AOCI, AFS/HTM
+> balances, TCE, P/TBV, ROA) is computed directly from the Tushare feed and is high-confidence. The only remaining
+> **web-sourced** cells are CET1, reported NIM, NCO/NPL, CRE mix, and NII-guidance direction (Medium confidence —
+> verify the guidance direction against the call before trading). Per-field confidence is flagged throughout. Not
+> investment advice.
 
 ---
 
@@ -48,24 +49,28 @@ filing cells remain web-sourced pending the same treatment.
 | **KEY** | N→A | +200bp:+0.38% ✓ | −15.1% | **$0.4B** ✓ (bal $8.7B) | 11.4* | n/f | 2.87↑ | 0.38 | +9–10% **RAISED** | 1.70 | 0.99 |
 | **ZION** | **A** (high) | **+3.7%** ✓ | **−31.5%** | **$0.07B** △ ✓ | 11.5 | **22%** ($1.6B off.) | 3.27 | 0.03 | +7–8% **RAISED** | 1.64 | 1.01 |
 | **WFC** | A (mod, asym) | +$1.7B ✓ | −5.7% | **$32.9B** ✓ | 10.3 | 13% (office focus) | 2.47 | 0.45 | ~$50B maintained | 1.87 | 0.99 |
-| **CFG** | A (slight) | +1.3% | −13.2% | n/f | 10.5 | 17% (office ~2%) | 3.14↑ | 0.39 | +10–12% maintained | 1.85 | 0.81 |
-| **FITB** | A→N | +0.1 to +0.9% | −14.7% | ~$0.1B | 10.0 | ~13–15% | 3.30↑ | 0.37 | $8.7–8.8B **RAISED** | 2.27 | 1.18 |
-| **PNC** | A (sec.) | n/f | −8.7% | n/f | 10.1 | n/f | 2.95↑ | n/f | +14.5%† maintained | 2.21 | 1.21 |
-| **JPM** | A (EaR) | n/f | **−1.5%** | $22.9B | 14.3 | ~9.8% | 2.99 | 0.61 | ~$103B **CUT** | 3.21 | 1.29 |
-| **MTB** | **N** (hedged) | n/f | **+0.4%** | $0.74B | 10.3 | 16.8% (office stress) | 3.71 | 0.31 | $7.2–7.35B maintained | 2.00 | 1.34 |
-| **RF** | A→**N** (hedged) | n/f | −14.7% | n/f | 10.7‡ | 16.8% (**office 0.9%**) | 3.67 | 0.54 | +2.5–4% maintained | 2.16 | 1.36 |
-| **HBAN** | A (mod) | −100bp:−0.5% | −10.2% | n/f | 10.2 | 13% (office 1.6%) | 3.24 | 0.26 | +39–43%§ low-end | 1.77 | 0.98 |
-| **C** | A (reduced) | −100bp:−$2.0B | −23.6%¶ | n/f | 12.7 | n/f | n/f | ~1.16 | +5–6% maintained | 1.42 | 0.54 |
-| **TFC** | **L** (short end) | n/f | −15.0% | n/f | 10.8 | 7.4% | 3.02 | 0.61 | +2–3% **LOWERED** | 1.47 | 0.97 |
-| **COF** | N (card) | n/f | −7.0% | N/A (all-AFS) | 14.4 | small | 7.87# | 3.45# | none | 1.47 | 0.37# |
+| **CFG** | A (slight) | +1.3%(i) ✓ | −13.2% | **$0.8B** ✓ | 10.5 | 17% (office ~2%) | 3.14↑ | 0.39 | +10–12% maintained | 1.85 | 0.81 |
+| **FITB** | A→N | +0.49%(g) ✓ | −14.7% | **$0.1B** ✓ | 10.0 | ~13–15% | 3.30↑ | 0.37 | $8.7–8.8B **RAISED** | 2.27 | 1.18 |
+| **PNC** | A (sec.) | ≈0%(+200i) ✓ | −8.7% | **$2.8B** ✓ | 10.1 | n/f | 2.95↑ | n/f | +14.5%† maintained | 2.21 | 1.21 |
+| **JPM** | A (EaR) | +$1.9B ✓ | **−1.5%** | **$17.7B** ✓‖ | 14.3 | ~9.8% | 2.99 | 0.61 | ~$103B **CUT** | 3.21 | 1.29 |
+| **MTB** | **N** (hedged) | −$20M(g) ✓ | **+0.4%** | **$0.78B** ✓ | 10.3 | 16.8% (office stress) | 3.71 | 0.31 | $7.2–7.35B maintained | 2.00 | 1.34 |
+| **RF** | A→**N** (hedged) | +$60M(g) ✓ | −14.7% | **$0.8B** ✓ | 10.7‡ | 16.8% (**office 0.9%**) | 3.67 | 0.54 | +2.5–4% maintained | 2.16 | 1.36 |
+| **HBAN** | A (mod) | +1.3%(g) ✓ | −10.2% | **$1.7B** ✓ | 10.2 | 13% (office 1.6%) | 3.24 | 0.26 | +39–43%§ low-end | 1.77 | 0.98 |
+| **C** | A (reduced) | +$1.2B(i) ✓ | −23.6%¶ | **$10.7B** ✓ | 12.7 | n/f | n/f | ~1.16 | +5–6% maintained | 1.42 | 0.54 |
+| **TFC** | **L** (short end) | −0.8%(+200g) ✓ | −15.0% | **$8.2B** ✓ | 10.8 | 7.4% | 3.02 | 0.61 | +2–3% **LOWERED** | 1.47 | 0.97 |
+| **COF** | N (card) | +0.5%(i) ✓ | −7.0% | **$0.01B** ✓ | 14.4 | small | 7.87# | 3.45# | none | 1.47 | 0.37# |
 
 \* KEY marked CET1 (incl. AOCI) ≈10.0%. † PNC incl. FirstBank; legacy ~+7.5–8%. ‡ RF 9.4% incl. AOCI.
 § HBAN distorted by Cadence/Veritex M&A. ¶ Citi AOCI is **mostly FX translation, not securities marks** —
 do not read it like a regional's bond hole. # COF card-model / Discover-distorted — not comparable.
-**✓ = filing-verified** against the Q1-2026 10-Q (BAC/ZION/USB/KEY/WFC done — see §2.1). △ ZION's *current*
-HTM mark is only **$0.07B**; the often-cited "$1.5B" is the pre-tax unrealized loss on securities **transferred
-from AFS to HTM**, frozen in AOCI ($1.2B after-tax) and amortizing — it will **not** hit earnings absent a sale,
-and is **not** a current HTM fair-value hole (ZION 10-Q, Investment Securities footnote / MD&A).
+**✓ = filing-verified** against the Q1-2026 10-Q (**all 15 now done** — §2.1 the priority five, §2.2 the other ten).
+In ΔNII: **(i)** = instantaneous +100bp, **(g)** = gradual +100bp ramp; where a bank doesn't disclose +100bp the
+nearest disclosed shock is shown (PNC/TFC = +200bp). Signs are the bank's own — a *negative* (TFC −0.8%, MTB
+−$20M) means NII *falls* as rates rise (liability-sensitive). △ ZION's *current* HTM mark is only **$0.07B**; the
+often-cited "$1.5B" is the pre-tax unrealized loss on securities **transferred from AFS to HTM**, frozen in AOCI
+($1.2B after-tax) and amortizing — it will **not** hit earnings absent a sale, and is **not** a current HTM
+fair-value hole. ‖ JPM's **$17.7B** is HTM-only; the earlier "$22.9B" was the **all-securities** gross loss
+(AFS $4.6B + HTM $17.7B = $22.3B at 3/31/26) — relabeled, not a regional-style HTM hole.
 
 ---
 
@@ -131,6 +136,71 @@ does not disclose that shock (USB publishes ±50/±200 only; KEY ±200 gradual o
 
 ---
 
+## 2.2 Primary-source detail — the other 10 names (Q1-2026 10-Q, read directly)
+
+Now also finalized from the actual filings (EDGAR, 2026-06-26), so **all 15 are primary-sourced**.
+
+**A. Interest-rate sensitivity — 12-month NII and EVE (as disclosed; signs are the bank's own):**
+
+| Bank | NII +100bp | +200bp | −100bp | −200bp | EVE +100 / +200bp | Type / disclosure |
+|---|---|---|---|---|---|---|
+| **JPM** | +$1.9B | +$2.9B | −$2.2B | −$4.8B | *n/d* | EaR, instantaneous parallel ($B) |
+| **C** | +$1.2B | +$2.3B | −$1.8B | −$3.5B | *n/d* (AOCI lens only) | IRE, instantaneous parallel ($M) |
+| **PNC** | ≈0%\* | ≈0% | ≈−0.5%\* | −1.4% | *n/d* / **−3.0%** | NII & EVE instantaneous (%) |
+| **TFC** | *n/d* | **−0.8%** | *n/d* | −0.4% | *n/d* | NII gradual ±200 + inst. ±50 (%) — *liability-sensitive* |
+| **COF** | +0.5% | +0.8% | −0.5% | −2.0% | **−2.5% / −5.5%** | NII + EVE, instantaneous (%) |
+| **RF** | +$60M | +$113M | −$55M | −$95M | *n/d* | NII gradual 12-mo ($M) |
+| **FITB** | +0.49% | +0.60% | −1.30% | −3.47% | **−0.26% / −1.22%** | NII gradual ramp; EVE inst. (%) |
+| **MTB** | −$20M | −$64M | +$10M | +$1M | *n/d* | NII gradual ramp ($M) — *mild liability* |
+| **CFG** | +0.9%g / +1.3%i | +1.6 / +1.9% | −0.8 / −1.7% | −1.7 / −4.5% | *n/d* | NII gradual **and** instantaneous (%) |
+| **HBAN** | +1.3% | +2.6% | −0.5% | −1.4% | **−2.7% / −6.7%** | NII gradual ramp; EVE inst. (%) |
+
+\* PNC discloses only ±200bp **instantaneous**: +200bp NII ≈ 0% ("—"), −200bp −1.4%; per its footnote +100bp ≈ the
++200bp result (≈0%) and −100bp ≈ ⅓ of −200bp (≈−0.5%). CFG shows both ramps: g = gradual, i = instantaneous.
+
+**B. Securities unrealized losses (gross, Mar 31 2026) and deposit cost / rough down-beta:**
+
+| Bank | HTM gross unrl. loss | AFS gross unrl. loss | IB-deposit cost Q1'26 (Q1'25) | Δ YoY | down-beta |
+|---|---|---|---|---|---|
+| **JPM** | **$17.7B** ‖ | $4.6B | 1.99% (2.23%) | −24bp | ~0.37 |
+| **C** | **$10.7B** | $2.1B | 2.71% (3.10%) | −39bp | ~0.60 |
+| **TFC** | **$8.2B** | $4.8B | 2.09% (2.46%) | −37bp | ~0.57 |
+| **PNC** | $2.8B | $2.5B | 1.96% (2.23%) | −27bp | ~0.42 ✦ |
+| **HBAN** | $1.7B | $2.5B | 2.21% (2.48%) | −27bp | ~0.42 ✦ |
+| **CFG** | $0.8B | $1.5B | 2.04% (2.37%) | −33bp | ~0.51 |
+| **RF** | $0.8B ♦ | $0.9B | 1.72% (2.02%) | −30bp | ~0.46 |
+| **MTB** | $0.78B | $0.15B | 1.96% (2.37%) | −41bp | ~0.63 |
+| **FITB** | $0.1B | $3.1B | 2.12% (2.39%) ◆ | −27bp | ~0.42 ✦ |
+| **COF** | $0.01B | $7.2B | 3.00% (3.22%) | −22bp | ~0.34 ✦ |
+
+✦ YoY distorted by a 2025–26 acquisition (PNC/FirstBank, HBAN/Cadence+Veritex, FITB/Comerica, COF/Discover) — read
+the trend, not the decimal. ♦ RF HTM $843M is the AOCI-frozen AFS→HTM transfer loss; +$73M not-in-OCI ≈ $0.9B total.
+◆ FITB rate is "core" interest-bearing deposits (excl. CDs > $250k); no single combined line is disclosed.
+
+**What the primary text settles across all 15:**
+- **The "hidden HTM hole" is a *mega-bank* story, not a regional one.** Largest HTM marks: **BAC $81.2B ≫ WFC $32.9B
+  > JPM $17.7B > C $10.7B > USB $9.4B > TFC $8.2B** — all opt-out books at amortized cost. The regionals
+  (CFG/RF/MTB/HBAN $0.8–1.7B, FITB $0.1B, ZION $0.07B) carry trivial HTM marks and wear their damage on AFS/AOCI in
+  plain sight. Notably **Citi's HTM loss ($10.7B) exceeds its AFS ($2.1B)** — the doc's "n/f" hid a real hole.
+- **JPM correction:** the doc's "$22.9B HTM" was the **all-securities** gross loss; HTM-only is **$17.7B** (AFS
+  $4.6B + HTM $17.7B = $22.3B total). JPM still has the cleanest mega AOCI (−1.5%) and discloses no EVE.
+- **TFC is confirmed wrong-side** for this thesis: liability-sensitive on every disclosed up-shock (+200bp gradual
+  −0.8%, +50bp inst. −0.2%) **and** carrying a not-small **$8.2B HTM** loss. Primary text reinforces "avoid."
+- **EVE is disclosed by only 5 of 15** (ZION, COF, FITB, HBAN, and PNC at ±200 only). Every one shows **negative EVE
+  to higher rates even where NII is positive** — the income-up / value-down split: HBAN EVE **−6.7%/+200** (vs NII
+  +2.6%), COF **−5.5%** (vs NII +0.8%), PNC **−3.0%**, FITB **−1.22%**, ZION **−0.8%** (vs EaR +7.4%). The other ten
+  publish no ±bp EVE at all, so cross-bank EVE comparison is mostly impossible from the filings.
+- **Citi's capital sensitivity is two distinct things.** Its −23.6% AOCI/TCE is FX-translation (CTA) — the doc's
+  caveat holds. *Separately*, Citi discloses an "estimated initial impact to AOCI" of **−$2.8B (+100bp) / −$5.8B
+  (+200bp)** after-tax from securities/hedges. Both are real; don't conflate the FX optics with the rate-driven
+  securities AOCI.
+- **Asset-sensitivity, ranked (disclosed +100bp).** On income, most asset-sensitive: **ZION +3.7%** ≫ **HBAN +1.3%
+  ≈ CFG +1.3%(i)** > COF/FITB ~+0.5% > KEY/USB ~+0.4–0.5% (at +200) ; the **$-disclosers**: WFC +$1.7B (≈+3% of NII)
+  > JPM +$1.9B & C +$1.2B (≈+2% of their larger bases) > BAC +$0.4B (≈+0.6%). **Neutral:** PNC (~0% to up-rates).
+  **Liability-sensitive:** MTB (−$20M/+100) and **TFC (−0.8%/+200)**.
+
+---
+
 ## 3. The headline finding — earnings-end vs capital-end (your framework items ① + ②)
 
 The whole point of this framework is that **higher rates help the income statement but hurt the balance
@@ -146,8 +216,10 @@ banks), footnote-only — the exact SVB blind spot. So:
   parallel-shock-driven; see §2.1.)
 - **WFC**: similar shape — clean −5.7% AOCI, but **$32.9B HTM** loss; NIM low (2.47%) but the franchise is sticky.
   Its disclosed +100bp NII lift (**+$1.7B**) is the **largest of the megas** shown here.
-- **JPM**: cleanest of the megas (AOCI/TCE −1.5%, HTM loss "only" $23B on a far bigger book), but it **cut**
-  NII guidance and trades at **3.2× tangible book** — priced for its quality.
+- **JPM**: cleanest of the megas (AOCI/TCE −1.5%, HTM loss **$17.7B** on a far bigger book — *not* the $22.9B in the
+  old cell, which was its all-securities total), but it **cut** NII guidance and trades at **3.2× tangible book**.
+- **C**: the doc's "n/f" hid a real one — **$10.7B HTM** loss, *larger than its $2.1B AFS* — though its headline
+  −23.6% AOCI/TCE is FX-translation (CTA), a separate risk (§2.2).
 
 **B. The regionals wear the damage on AOCI, in plain sight.**
 - **ZION** is the sharp end: **AOCI/TCE −31.5%** (worst in the group) *and* **22% CRE**, yet it is the **most
@@ -158,7 +230,7 @@ banks), footnote-only — the exact SVB blind spot. So:
   none is forced to sell.
 
 **C. Two names are genuinely clean on capital — for opposite reasons.**
-- **MTB**: AOCI/TCE **+0.4%** (a small *gain*) and a tiny $0.7B HTM loss — the least rate-scarred balance sheet
+- **MTB**: AOCI/TCE **+0.4%** (a small *gain*) and a tiny $0.78B HTM loss — the least rate-scarred balance sheet
   in the group, the payoff for running hedged-neutral. Offset: it carries the most-watched **office-CRE** book.
 - **JPM**: clean by sheer scale and hedging.
 
@@ -183,8 +255,9 @@ banks), footnote-only — the exact SVB blind spot. So:
   USB **2.13% (2.39%)**, ZION **2.26% (2.61%)**. All fell YoY as the Fed eased (3-month UST −65bp). The implied
   **cutting-cycle down-beta** runs **USB 0.40 ≈ WFC 0.42 < ZION 0.54 < BAC 0.67 < KEY 0.81** — i.e. WFC/USB hold
   the **cheapest and stickiest** deposit funding (the low-beta franchise edge that pays off in higher-for-longer),
-  while KEY/BAC pass falling rates through fastest. Caveat: this is a *down*-cycle beta; the 2022–24 *up*-beta isn't
-  recoverable from one quarter's filing.
+  while KEY/BAC pass falling rates through fastest. (All 15 betas in §2.2B; across the group COF 0.34 and JPM 0.37
+  are the lowest, KEY 0.81 the highest — several are M&A-distorted ✦.) Caveat: this is a *down*-cycle beta; the
+  2022–24 *up*-beta isn't recoverable from one quarter's filing.
 - **CRE / office** (the regional landmine): **lowest office** = RF (office just **0.9%** of loans) and ZION
   ($1.6B, mostly suburban); **highest watch** = MTB (office-CRE the named stress point), CFG, M-cap-light
   regionals. Total CRE: ZION 22% > CFG 17% > RF/MTB 16.8% > HBAN/WFC/FITB ~13% > JPM ~10% > TFC 7% > BAC 6%.
@@ -240,20 +313,21 @@ rather than a rate play.
 | AOCI/TCE, AFS/HTM balances, P/TBV, TCE, ROA, NIM-proxy | **High** | Computed from Tushare Q1-2026 balance sheet / FY2025 indicators directly. |
 | Curve / 2s10s | **High** | Tushare `us_tycr`, 2026-06-25. |
 | CET1, reported NIM, NCO, NPL, NII guidance & direction | **Medium** | Web-sourced from earnings releases/calls; mostly multi-corroborated. |
-| **ΔNII ±bp / EVE / HTM·AFS losses / deposit cost — BAC, ZION, USB, KEY, WFC** | **High** | ✅ **Finalized 2026-06-26 from the primary Q1-2026 10-Q** (Item 3 market-risk table + Investment Securities footnote + average-balance deposit cost). See §2.1. |
-| **ΔNII ±100bp / EVE table, HTM/AFS unrealized-loss $ — other 10 names** | **Low / partial** | Still web-sourced; live in each 10-Q Item 3 / securities footnote. Same EDGAR full-text method now works (the 403s were a missing User-Agent) — extend when needed. |
+| **ΔNII ±bp / EVE / HTM·AFS gross losses / avg deposit cost — ALL 15** | **High** | ✅ **Finalized 2026-06-26 from each bank's primary Q1-2026 10-Q** (Item 3 market-risk table + Investment Securities footnote + average-balance deposit cost). See §2.1 (priority 5) and §2.2 (other 10). M&A-distorted YoY deposit trends flagged ✦. |
 
-**Status:** the 5 priority names (BAC, ZION, USB, KEY, WFC) are **done** from the primary 10-Q (§2.1). **Still
-outstanding** — the other 10 (C, PNC, TFC, COF, RF, FITB, MTB, CFG, HBAN; JPM partial): pull each Q1-2026 10-Q
-→ *Quantitative and Qualitative Disclosures About Market Risk* (±100/200bp NII + EVE) and *Investment Securities*
-footnote (HTM vs AFS unrealized loss) + average-cost-of-deposits, via EDGAR full-text search
-(`efts.sec.gov/LATEST/search-index?q=...` or the UI at `https://efts.sec.gov/LATEST/search-index`).
+**Status: complete.** All 15 names' rate-sensitivity, EVE (where disclosed), HTM/AFS gross losses, and average
+deposit cost are now read from the primary Q1-2026 10-Q (§2.1 priority 5, §2.2 other 10). The remaining
+*Medium*-confidence cells (CET1, reported NIM, NCO/NPL, CRE mix, NII-guidance direction) are still
+earnings-release/transcript-sourced — a reasonable next pass if needed, but lower-leverage than the rate/HTM
+cells just finalized.
 
 ---
 
 ## 7. Changelog — primary-source finalization (2026-06-26)
 
-Read directly from each Q1-2026 10-Q (SEC EDGAR). **Net: the thesis holds; three substantive corrections.**
+Read directly from each Q1-2026 10-Q (SEC EDGAR). **Net: the thesis holds; the substantive corrections below.**
+
+### Priority 5
 
 1. **BAC ΔNII +100bp: "+~$0.45B (≈+0.7%)" → +$0.4B.** The old figure conflated the Dec-2025 column (+$0.7B) with
    the current quarter. Full BAC curve (Table 40, $B): +100 **+0.4**, +200 +0.6, −100 −2.0, −200 −4.9. EVE is
@@ -271,11 +345,30 @@ Read directly from each Q1-2026 10-Q (SEC EDGAR). **Net: the thesis holds; three
 (bal $8.7B) / AFS $2.6B / +200bp NII-at-risk **+0.38%** (gradual). **Confirmed to the dollar:** BAC HTM **$81.2B**,
 WFC HTM **$32.9B** gross ($32.8B net), WFC +100bp **+$1.7B**, BAC −100bp **−$2.0B**.
 
-**Deposit beta (new):** avg cost of total interest-bearing deposits, Q1'26 vs Q1'25, from each 10-Q average-balance
-table, ÷ the −65bp move in the quarterly-avg 3-month UST → cutting-cycle **down-betas: USB 0.40, WFC 0.42, ZION
-0.54, BAC 0.67, KEY 0.81**. WFC/USB fund cheapest and stickiest (1.90%/2.13%).
+### Other 10 (now also primary-sourced — see §2.2)
+
+4. **JPM HTM "$22.9B" → $17.7B (relabeled).** The old figure was the **all-securities** gross loss ($22.3B = AFS
+   $4.6B + HTM $17.7B). HTM-only is **$17.7B**. JPM EaR confirmed (+$1.9B/+100, −$2.2B/−100); no EVE disclosed.
+5. **C HTM "n/f" → $10.7B (and it exceeds AFS $2.1B).** A real, previously hidden hole. IRE confirmed asymmetric
+   (+$1.2B/+100, −$1.8B/−100). No EVE — but Citi discloses a securities-AOCI sensitivity (−$2.8B/+100bp after-tax),
+   distinct from the FX/CTA that drives its −23.6% AOCI/TCE.
+6. **TFC "n/f" → $8.2B HTM; liability-sensitivity confirmed** (+200bp gradual **−0.8%**). Wrong-side-of-thesis
+   call reinforced.
+7. **Filled the rest of the `n/f`s:** PNC HTM **$2.8B** (NII ≈0% to +rates, EVE −3.0%/+200); HBAN **$1.7B** (NII
+   +1.3%/+100, EVE −6.7%/+200); CFG **$0.8B** (NII +1.3%i); RF **$0.8B** (NII +$60M/+100); FITB HTM **$0.1B** /
+   AFS **$3.1B** (NII +0.49%/+100, EVE −1.22%/+200); COF essentially **all-AFS** (HTM $0.01B, $7.2B AFS; NII
+   +0.5%/+100, EVE −5.5%/+200); MTB **$0.78B** (NII −$20M/+100 — mild liability).
+8. **EVE coverage mapped:** only **ZION, COF, FITB, HBAN** (+ PNC at ±200) publish a quantitative ±bp EVE; all show
+   value-down to higher rates even where income is up.
+
+**Deposit beta (new, all 15):** avg cost of total interest-bearing deposits, Q1'26 vs Q1'25, from each 10-Q
+average-balance table, ÷ the −65bp move in the quarterly-avg 3-month UST → cutting-cycle **down-betas**, lowest→
+highest: **COF 0.34 ✦, JPM 0.37, USB 0.40, WFC 0.42, PNC 0.42 ✦, FITB 0.42 ✦, HBAN 0.42 ✦, RF 0.46, CFG 0.51,
+ZION 0.54, TFC 0.57, C 0.60, MTB 0.63, BAC 0.67, KEY 0.81**. WFC/USB (and JPM) fund cheapest and stickiest;
+✦ = YoY distorted by a 2025–26 acquisition (read the trend, not the decimal).
 
 ---
 
-*Screening aid, not investment advice. The 5 priority names are primary-sourced (§2.1, §7); the other 10's
-filing-layer figures remain web-sourced pending the same treatment. 中国境内用户如涉及境外投资,请注意合规与风险揭示。*
+*Screening aid, not investment advice. All 15 names' rate-sensitivity / EVE / HTM·AFS-loss / deposit-cost cells are
+now primary-sourced from the Q1-2026 10-Q (§2.1, §2.2, §7); remaining Medium-confidence cells (CET1, NIM, NCO, CRE,
+guidance direction) are still web-sourced. 中国境内用户如涉及境外投资,请注意合规与风险揭示。*
