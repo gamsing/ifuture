@@ -1,5 +1,7 @@
 # US Bank Rate-Positioning Study — Who Outperforms on the Rate Thesis
 
+**🌐 中文版:** [us-bank-rate-positioning-2026-06.zh-CN.md](us-bank-rate-positioning-2026-06.zh-CN.md)
+
 > **Thesis.** US Treasury yields higher-for-longer, curve dis-inverting. Banks that win are
 > **asset-sensitive** (NII rises with rates), with **low deposit beta**, **clean AOCI / small HTM holes**,
 > and **manageable CRE** — the dual-edged risks that blew up the 2023 regionals. This study ranks 15 large +
